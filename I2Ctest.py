@@ -7,10 +7,10 @@ Tests I2C communication between Pi and ATMega
 from smbus2 import SMBusWrapper
 import time
 
-ATMegaData = [0, 0, 0, 0, 0, 0, 0, 0]
+ATMegaData = [0, 1, 3, 50, 80, 0, 0, 0]
 PiData = [3, 10, 120]
 
-while (1)
+while (1):
 	"""
 	Read 7 bytes from ATMega (2 bytes FuelCellCurrent, 2 bytes 
 	FuelCellVoltage, 2 bytes BatteryVoltage, 1 byte ATMega status)
@@ -37,5 +37,10 @@ while (1)
 
 	time.sleep(0.5)
 
-	print("ATMega Data: " + ATMegaData)
-	print("Pi Data: " + PiData)
+	print("ATMega Data: ")
+	for i in ATMegaData:
+		print(i)
+
+	print("\nPi Data: ")
+	for i in PiData:
+		print(i)
