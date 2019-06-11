@@ -6,7 +6,7 @@ Tests I2C communication between Pi and ATMega
 
 from smbus2 import SMBusWrapper
 import tkinter as tk
-import thread
+import threading as thread
 import time
 
 ATMEGA_ADDRESS = 8
@@ -14,7 +14,7 @@ ATMEGA_ADDRESS = 8
 ATMegaData = [0, 1, 3, 50, 80, 0, 0, 0]
 PiData = [3, 10, 120]
 
-def initI2C:
+def initI2C():
     while (1):
         """
         Read 7 bytes from ATMega (2 bytes FuelCellCurrent, 2 bytes 
@@ -48,7 +48,7 @@ def initI2C:
         for i in PiData:
             print(i)
 
-def initGUI:
+def initGUI():
     # Create the main window
     root = tk.Tk()
     root.title("EcoCar GUI")
@@ -66,7 +66,7 @@ try:
     thread.start_new_thread(initI2C)
     thread.start_new_thread(initGUI)
 except:
-    print "Error: unable to start threads"
+    print("Error: unable to start threads")
 
 while (1):
     pass
