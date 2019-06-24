@@ -51,7 +51,10 @@ while (1):
 	# of bytes: 3
 	"""
 	with smbus2.SMBusWrapper(1) as bus:
-		bus.write_i2c_block_data(8, 0, PiData)
+		bus.write_i2c_block_data(8, 42, [43,23])
+
+#	value = 3
+#	bus.write_word_data(8, 0, value)
 
 	time.sleep(0.5)
 
