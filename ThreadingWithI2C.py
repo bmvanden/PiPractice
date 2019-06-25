@@ -106,7 +106,7 @@ class GUIThread (threading.Thread):
         PiDataLabel3 = tk.Label(root, text=PiData[2])
         PiDataLabel3.pack()
         PiDataUpdateButton = tk.Button(root, text="Increment Values", command=incrementValues)
-
+        PiDataUpdateButton.pack()
 
         # Run forever!        
         root.mainloop()
