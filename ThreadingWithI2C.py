@@ -107,11 +107,11 @@ class GUIThread (threading.Thread):
         x3 = tk.IntVar()
         x3.set (PiData[2])
 
-        PiDataLabel1 = tk.Label(root, textvariable=x1)
+        PiDataLabel1 = tk.Label(root, text=PiData[0])
         PiDataLabel1.pack()
-        PiDataLabel2 = tk.Label(root, textvariable=x2)
+        PiDataLabel2 = tk.Label(root, text=PiData[1])
         PiDataLabel2.pack()
-        PiDataLabel3 = tk.Label(root, textvariable=x3)
+        PiDataLabel3 = tk.Label(root, text=PiData[2])
         PiDataLabel3.pack()
         PiDataUpdateButton = tk.Button(root, text="Increment Values", command=incrementValues)
         PiDataUpdateButton.pack()
@@ -121,8 +121,11 @@ class GUIThread (threading.Thread):
 
 def incrementValues():
     PiData[0] = PiData[0] + 1
+    PiDataLabel1.configure(text=PiData[0])
     PiData[1] = PiData[1] + 1
+    PiDataLabel2.configure(text=PiData[1])
     PiData[2] = PiData[2] + 1
+    PiDataLabel3.configure(text=PiData[2])
 
 def print_time(threadName, counter, delay):
     while counter:
