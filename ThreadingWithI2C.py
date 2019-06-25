@@ -99,11 +99,19 @@ class GUIThread (threading.Thread):
         #Display Variable Values for Pi and ATMega
         PiDataTitle = tk.Label(root, text="Pi Data")
         PiDataTitle.pack()
-        PiDataLabel1 = tk.Label(root, text=PiData[0])
+
+        x1 = IntVar()
+        x1.set (PiData[0])
+        x2 = IntVar()
+        x2.set (PiData[1])
+        x3 = IntVar()
+        x3.set (PiData[2])
+
+        PiDataLabel1 = tk.Label(root, textvariable=x1)
         PiDataLabel1.pack()
-        PiDataLabel2 = tk.Label(root, text=PiData[1])
+        PiDataLabel2 = tk.Label(root, textvariable=x2)
         PiDataLabel2.pack()
-        PiDataLabel3 = tk.Label(root, text=PiData[2])
+        PiDataLabel3 = tk.Label(root, textvariable=x3)
         PiDataLabel3.pack()
         PiDataUpdateButton = tk.Button(root, text="Increment Values", command=incrementValues)
         PiDataUpdateButton.pack()
