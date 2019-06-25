@@ -97,11 +97,24 @@ class GUIThread (threading.Thread):
         root.geometry("800x480")
 
         #Display Variable Values for Pi and ATMega
+        PiDataTitle = tk.Label(root, text="Pi Data")
+        PiDataTitle.pack()
         PiDataLabel1 = tk.Label(root, text=PiData[0])
         PiDataLabel1.pack()
+        PiDataLabel2 = tk.Label(root, text=PiData[1])
+        PiDataLabel2.pack()
+        PiDataLabel3 = tk.Label(root, text=PiData[2])
+        PiDataLabel3.pack()
+        PiDataUpdateButton = tk.Button(root, text="Increment Values", command=incrementValues)
+
 
         # Run forever!        
         root.mainloop()
+
+def incrementValues():
+    PiData[0] = PiData[0] + 1
+    PiData[1] = PiData[1] + 1
+    PiData[2] = PiData[2] + 1
 
 def print_time(threadName, counter, delay):
     while counter:
