@@ -95,7 +95,7 @@ class GUIThread (threading.Thread):
         root.geometry("800x480")
 
         #Display Variable Values for Pi and ATMega
-        PiDataLabel1 = tk.label(root, text=PiData[0])
+        PiDataLabel1 = tk.Label(root, text=PiData[0])
         PiDataLabel1.pack()
 
         # Run forever!        
