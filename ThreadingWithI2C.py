@@ -93,7 +93,12 @@ class GUIThread (threading.Thread):
         # Set window size to match 7" SparkFun LCD (800 x 480)
         root.resizable(False, False)
         root.geometry("800x480")
-        # Run forever!
+
+        #Display Variable Values for Pi and ATMega
+        PiDataLabel1 = tk.label(root, text=PiData[0])
+        PiDataLabel1.pack()
+
+        # Run forever!        
         root.mainloop()
 
 def print_time(threadName, counter, delay):
