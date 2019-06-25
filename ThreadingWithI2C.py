@@ -100,13 +100,6 @@ class GUIThread (threading.Thread):
         PiDataTitle = tk.Label(root, text="Pi Data")
         PiDataTitle.pack()
 
-        x1 = tk.IntVar()
-        x1.set (PiData[0])
-        x2 = tk.IntVar()
-        x2.set (PiData[1])
-        x3 = tk.IntVar()
-        x3.set (PiData[2])
-
         PiDataLabel1 = tk.Label(root, text=PiData[0])
         PiDataLabel1.pack()
         PiDataLabel2 = tk.Label(root, text=PiData[1])
