@@ -12,6 +12,9 @@ bus = smbus2.SMBus(1)
 
 exitFlag = 0
 
+ATMegaData = [0, 1, 3, 50] #, 80, 0, 0, 0])
+PiData = [3, 10, 120]
+
 class I2CThread (threading.Thread):
     def __init__(self, threadID, name, counter):
         threading.Thread.__init__(self)
@@ -20,8 +23,7 @@ class I2CThread (threading.Thread):
         self.counter = counter
     def run(self):
         print("Starting " + self.name)
-        ATMegaData = [0, 1, 3, 50] #, 80, 0, 0, 0])
-        PiData = [3, 10, 120]
+
 
         time.sleep(2)
 
@@ -95,7 +97,7 @@ class GUIThread (threading.Thread):
         root.geometry("800x480")
 
         #Display Variable Values for Pi and ATMega
-        PiDataLabel1 = tk.label(root, text=PiData[0])
+        PiDataLabel1 = tk.Label(root, text=PiData[0])
         PiDataLabel1.pack()
 
         # Run forever!        
