@@ -12,7 +12,7 @@ bus = smbus2.SMBus(1)
 
 exitFlag = 0
 
-ATMegaData = [0, 1, 3, 50, 80, 0, 0, ]
+ATMegaData = [0, 1, 3, 50, 80, 0, 0]
 PiData = [3, 10, 120]
 
 
