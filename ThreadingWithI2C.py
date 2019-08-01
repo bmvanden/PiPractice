@@ -15,13 +15,7 @@ exitFlag = 0
 ATMegaData = [0, 1, 3, 50] #, 80, 0, 0, 0])
 PiData = [3, 10, 120]
 
-#Data for live update of GUI
-PiData0 = tk.IntVar()
-PiData1 = tk.IntVar()
-PiData2 = tk.IntVar()
-PiData0.set(PiData[0])
-PiData1.set(PiData[1])
-PiData2.set(PiData[2])
+
 
 class I2CThread (threading.Thread):
     def __init__(self, threadID, name, counter):
@@ -104,29 +98,37 @@ class GUIThread (threading.Thread):
         root.resizable(False, False)
         root.geometry("800x480")
 
-        #Display Variable Values for Pi and ATMega
-        PiDataTitle = tk.Label(root, text="Pi Data")
-        PiDataTitle.pack()
+        #Data for live update of GUI
+        # PiData0 = tk.IntVar()
+        # PiData1 = tk.IntVar()
+        # PiData2 = tk.IntVar()
+        # PiData0.set(PiData[0])
+        # PiData1.set(PiData[1])
+        # PiData2.set(PiData[2])
 
-        PiDataLabel1 = tk.Label(root, textvariable=PiData0)
-        PiDataLabel1.pack()
-        PiDataLabel2 = tk.Label(root, textvariable=PiData1)
-        PiDataLabel2.pack()
-        PiDataLabel3 = tk.Label(root, textvariable=PiData2)
-        PiDataLabel3.pack()
-        PiDataUpdateButton = tk.Button(root, text="Increment Values", command=incrementValues)
-        PiDataUpdateButton.pack()
+        #Display Variable Values for Pi and ATMega
+        # PiDataTitle = tk.Label(root, text="Pi Data")
+        # PiDataTitle.pack()
+
+        # PiDataLabel1 = tk.Label(root, textvariable=PiData0)
+        # PiDataLabel1.pack()
+        # PiDataLabel2 = tk.Label(root, textvariable=PiData1)
+        # PiDataLabel2.pack()
+        # PiDataLabel3 = tk.Label(root, textvariable=PiData2)
+        # PiDataLabel3.pack()
+        # PiDataUpdateButton = tk.Button(root, text="Increment Values", command=incrementValues)
+        # PiDataUpdateButton.pack()
 
         # Run forever!        
         root.mainloop()
 
 def incrementValues():
-    PiData[0] = PiData[0] + 1
-    PiData[1] = PiData[1] + 1
-    PiData[2] = PiData[2] + 1
-    PiData0.set(PiData[0])
-    PiData1.set(PiData[1])
-    PiData2.set(PiData[2])
+    # PiData[0] = PiData[0] + 1
+    # PiData[1] = PiData[1] + 1
+    # PiData[2] = PiData[2] + 1
+    # PiData0.set(PiData[0])
+    # PiData1.set(PiData[1])
+    # PiData2.set(PiData[2])
 
 def print_time(threadName, counter, delay):
     while counter:
