@@ -12,7 +12,7 @@ bus = smbus2.SMBus(1)
 
 exitFlag = 0
 
-ATMegaData = [0, 1, 3, 50, 80, 0, 0]
+ATMegaData = [0, 1, 3, 50, 80, 0, 0, 5]
 PiData = [3, 10, 120]
 
 
@@ -38,9 +38,11 @@ class I2CThread (threading.Thread):
             Offset:     0
             of Bytes:   7
             """
-            with smbus2.SMBusWrapper(1) as bus:
-                ATMegaData = bus.read_i2c_block_data(8, 0, 7)
-
+            try:
+                with smbus2.SMBusWrapper(1) as bus:
+                    ATMegaData = bus.read_i2c_block_data(8, 0, 8)
+            except:
+                print("Read Error")
         #   data = bus.read_byte_data(8, 0)
 
         #   block = bus.read_i2c_block_data(8, 0, 4)
@@ -66,9 +68,14 @@ class I2CThread (threading.Thread):
             Offset:     0
             # of bytes: 3
             """
-            with smbus2.SMBusWrapper(1) as bus:
-                bus.write_i2c_block_data(8, 42, [43,23])
-
+            try:
+                with smbus2.SMBusWrapper(1) as bus:
+                    bus.write_i2c_block_data(8, 42, [PiData[0],PiData[1],PiData[2]])
+                PiData[0] += 1
+                PiData[1] += 2
+                PiData[2] -= 1
+            except:
+                print("Write Error")
         #   value = 3
         #   bus.write_word_data(8, 0, value)
 
