@@ -21,7 +21,7 @@ class I2CThread (threading.Thread):
     def run(self):
         print("Starting " + self.name)
 
-        # Give threads time to initialize
+        # Give thread time to initialize
         time.sleep(2)
 
         PiStatusOptions = {0: "Boot up",
@@ -68,6 +68,8 @@ class I2CThread (threading.Thread):
                 PiData[0] += 1
                 PiData[1] += 2
                 PiData[2] += 1
+                if PiData[2] > 15:
+                    PiData[2] = 0
                 writeErrCounter = 0
             except:
                 #print("Write Error")
@@ -77,9 +79,9 @@ class I2CThread (threading.Thread):
 
             print("\n\nATMega Data: ")
             print(ATMegaData)
-            print("\nPi Data: ")
+            print("Pi Data: ")
             print(PiData)
-            print("\nRead Error Counter: % 2d  Write Error Counter: % 2d" 
+            print("Read Error Counter: % 2d  Write Error Counter: % 2d" 
                 %(readErrCounter, writeErrCounter))
-            print("\nStatus: ")
-            print(PiStatusOptions.get(PiData[2], 'INVALID STATE'))
+            print("Status: % s"
+                %(PiStatusOptions.get(PiData[2], 'INVALID STATE')))

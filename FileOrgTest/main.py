@@ -4,8 +4,8 @@ Threading example from: https://www.tutorialspoint.com/python/python_multithread
 
 #!/usr/bin/python
 
-import I2CThread
-import GUIThread
+from AppFiles import I2CThread
+from AppFiles import GUIThread
 
 # Create new threads
 thread1 = I2CThread.I2CThread(1, "Thread-1", 1)
