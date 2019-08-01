@@ -12,7 +12,7 @@ bus = smbus2.SMBus(1)
 
 exitFlag = 0
 
-ATMegaData = [0, 1, 3, 50] #, 80, 0, 0, 0])
+ATMegaData = [0, 1, 3, 50, 80, 0, 0, 0]
 PiData = [3, 10, 120]
 
 
@@ -122,7 +122,7 @@ class GUIThread (threading.Thread):
         # Run forever!        
         root.mainloop()
 
-def incrementValues():
+#def incrementValues():
     # PiData[0] = PiData[0] + 1
     # PiData[1] = PiData[1] + 1
     # PiData[2] = PiData[2] + 1
