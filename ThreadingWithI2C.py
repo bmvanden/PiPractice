@@ -12,7 +12,7 @@ bus = smbus2.SMBus(1)
 
 exitFlag = 0
 
-ATMegaData = [0, 1, 3, 50, 80, 0, 0, 0]
+ATMegaData = [0, 1, 3, 50, 80, 0, 0, ]
 PiData = [3, 10, 120]
 
 
@@ -39,7 +39,7 @@ class I2CThread (threading.Thread):
             of Bytes:   7
             """
             with smbus2.SMBusWrapper(1) as bus:
-                ATMegaData = bus.read_i2c_block_data(8, 0, 4)
+                ATMegaData = bus.read_i2c_block_data(8, 0, 7)
 
         #   data = bus.read_byte_data(8, 0)
 
