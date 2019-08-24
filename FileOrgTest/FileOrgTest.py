@@ -11,15 +11,6 @@ import I2CThread
 
 exitFlag = 0
 
-# Holds data to be received from ATMega
-ATMegaData = [0, 1, 3, 50, 80, 0, 0, 5]
-
-# Holds data to be sent to ATMega
-PiData = [3, 10, 120]
-
-
-
-
 class GUIThread (threading.Thread):
     def __init__(self, threadID, name, counter):
         threading.Thread.__init__(self)
@@ -76,7 +67,7 @@ def print_time(threadName, counter, delay):
         counter -= 1
 
 # Create new threads
-thread1 = I2CThread(1, "Thread-1", 1)
+thread1 = I2CThread.I2CThread(1, "Thread-1", 1)
 thread2 = GUIThread(2, "Thread-2", 2)
 
 # Start new Threads

@@ -2,6 +2,12 @@ import threading
 import time
 import smbus2
 
+# Holds data to be received from ATMega
+ATMegaData = [0, 1, 3, 50, 80, 0, 0, 5]
+
+# Holds data to be sent to ATMega
+PiData = [3, 10, 120]
+
 class I2CThread (threading.Thread):
     def __init__(self, threadID, name, counter):
         threading.Thread.__init__(self)
