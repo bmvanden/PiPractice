@@ -6,7 +6,11 @@ import smbus2
 ATMegaData = [0, 1, 3, 50, 80, 0, 0, 5]
 
 # Holds data to be sent to ATMega
-PiData = [3, 10, 120]
+PiData = [3, 10, 0]
+
+readErrCounter = 0
+writeErrCounter = 0
+
 
 class I2CThread (threading.Thread):
     def __init__(self, threadID, name, counter):
@@ -20,6 +24,18 @@ class I2CThread (threading.Thread):
         # Give threads time to initialize
         time.sleep(2)
 
+        PiStatusOptions = {'0': "Boot up"
+                       '3': "Normal Operation"
+                       '4': "Load Overtemp"
+                       '5': "Controller Overtemp"
+                       '6': "Load Overcurrent"
+                       '7': "Fuel Cell Voltage too High"
+                       '8': "Fuel Cell Voltage too Low"
+                       '9': "Battery Low"
+                       '10':"Air Starve Relay Active"
+                       '15':"Lost Communication"
+                       'default': "Invalid State"}
+
         while (1):
             """
             Read 7 bytes from ATMega (2 bytes FuelCellCurrent, 2 bytes 
@@ -32,22 +48,10 @@ class I2CThread (threading.Thread):
             try:
                 with smbus2.SMBusWrapper(1) as bus:
                     ATMegaData = bus.read_i2c_block_data(8, 0, 8)
+                readErrCounter = 0
             except:
-                print("Read Error")
-        #   data = bus.read_byte_data(8, 0)
-
-        #   block = bus.read_i2c_block_data(8, 0, 4)
-        #   block2 = struct.unpack("<HHHH",block)
-        #   print(data)
-        #   print('\n')
-
-        #   for received in block:
-        #       ATMegaData[1] = received
-
-        #   ATMegaData = struct.unpack('l', ''.join([chr(i) for i in block[:4]))[0]
-        #   ATMegaData[0] = bus.read_byte(8)
-        #   ATMegaData[1] = bus.read_byte(8,1)
-
+                #print("Read Error")
+                readErrCounter += 1
 
             time.sleep(0.5)
 
@@ -64,19 +68,16 @@ class I2CThread (threading.Thread):
                     bus.write_i2c_block_data(8, 42, [PiData[0],PiData[1],PiData[2]])
                 PiData[0] += 1
                 PiData[1] += 2
-                PiData[2] -= 1
+                PiData[2] += 1
+                writeErrCounter = 0
             except:
-                print("Write Error")
-        #   value = 3
-        #   bus.write_word_data(8, 0, value)
+                #print("Write Error")
+                writeErrCounter += 1
 
             time.sleep(0.5)
 
-            print("ATMega Data: ")
-            for i in ATMegaData:
-                print(i)
-            print(ATMegaData)
-
-            print("\nPi Data: ")
-            for i in PiData:
-                print(i)
+            print("\n\nATMega Data: " + ATMegaData)
+            print("\nPi Data: " + PiData)
+            print("\nRead Error Counter: " + readErrCounter 
+                + "Write Error Counter: " + writeErrCounter)
+            print("\nStatus: " + PiStatusOptions.get(key, 'default'))
