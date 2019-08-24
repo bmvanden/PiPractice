@@ -17,7 +17,7 @@ PiData = [3, 10, 120]
 def initI2C():
     while (1):
         """
-        Read 7 bytes from ATMega (2 bytes FuelCellCurrent, 2 bytes 
+        Read 7 bytes from ATMega (2 bytes Fu elCellCurrent, 2 bytes 
         FuelCellVoltage, 2 bytes BatteryVoltage, 1 byte ATMega status)
 
         Offset:     0
