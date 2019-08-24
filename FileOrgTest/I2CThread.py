@@ -24,17 +24,16 @@ class I2CThread (threading.Thread):
         # Give threads time to initialize
         time.sleep(2)
 
-        PiStatusOptions = {'0': "Boot up",
-                       '3': "Normal Operation",
-                       '4': "Load Overtemp",
-                       '5': "Controller Overtemp",
-                       '6': "Load Overcurrent",
-                       '7': "Fuel Cell Voltage too High",
-                       '8': "Fuel Cell Voltage too Low",
-                       '9': "Battery Low",
-                       '10':"Air Starve Relay Active",
-                       '15':"Lost Communication",
-                       'default': "Invalid State"}
+        PiStatusOptions = {0: "Boot up",
+                           3: "Normal Operation",
+                           4: "Load Overtemp",
+                           5: "Controller Overtemp",
+                           6: "Load Overcurrent",   
+                           7: "Fuel Cell Voltage too High",
+                           8: "Fuel Cell Voltage too Low",
+                           9: "Battery Low",
+                           10:"Air Starve Relay Active",
+                           15:"Lost Communication"}
 
         while (1):
             """
@@ -81,6 +80,6 @@ class I2CThread (threading.Thread):
             print("\nPi Data: ")
             print(PiData)
             print("\nRead Error Counter: % 2d  Write Error Counter: % 2d" 
-                %(readErrCounter, writeErrCounter)
+                %(readErrCounter, writeErrCounter))
             print("\nStatus: ")
-            print(PiStatusOptions.get(key, 'default'))
+            print(PiStatusOptions.get(PiData[2], 'INVALID STATE'))
