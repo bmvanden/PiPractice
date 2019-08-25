@@ -1,5 +1,6 @@
 import threading
 import tkinter as tk
+import I2CThread
 
 class GUIThread (threading.Thread):
     def __init__(self, threadID, name, counter):
