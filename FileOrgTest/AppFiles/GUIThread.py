@@ -49,6 +49,6 @@ class GUIThread (threading.Thread):
         root.mainloop()
         
         while 1:
-            PiData0.set(main.PiData[0])
+            PiData0.set(I2CThread.PiData[0])
 
 
