@@ -24,10 +24,8 @@ class GUIThread (threading.Thread):
         # PiData1.set(PiData[1])
         # PiData2.set(PiData[2])
 
-        
         def incrementValues():
             PiData0.set(PiData0.get() + 1)
-            print(PiData0.get())
             # PiData[1] = PiData[1] + 1
             # PiData[2] = PiData[2] + 1
             # PiData0.set(PiData[0])
@@ -49,4 +47,5 @@ class GUIThread (threading.Thread):
 
         # Run forever!        
         root.mainloop()
+            PiData0 = main.PiData[0]
 
