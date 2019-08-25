@@ -1,6 +1,7 @@
 import threading
 import tkinter as tk
 from AppFiles import I2CThread
+import time
 
 class GUIThread (threading.Thread):
     def __init__(self, threadID, name, counter):
@@ -49,10 +50,13 @@ class GUIThread (threading.Thread):
 
             
         # Run forever!        
-        root.mainloop()
+        # root.mainloop()
         
         while 1:
+            root.update()
             PiData0.set(I2CThread.PiData[0])
+            time.sleep(0.1)
+            
         
 
 
