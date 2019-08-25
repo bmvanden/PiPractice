@@ -47,5 +47,8 @@ class GUIThread (threading.Thread):
 
         # Run forever!        
         root.mainloop()
+        
+        while 1:
             PiData0 = main.PiData[0]
+
 
