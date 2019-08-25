@@ -8,8 +8,8 @@ from AppFiles import I2CThread
 from AppFiles import GUIThread
 
 # Create new threads
-thread1 = I2CThread.I2CThread(1, "Thread-1", 1)
-thread2 = GUIThread.GUIThread(2, "Thread-2", 2)
+thread1 = I2CThread.I2CThread(1, "Thread-1", 1)    # Send and receive data from ATMega
+thread2 = GUIThread.GUIThread(2, "Thread-2", 2)    # Run the user interface
 
 # Start new Threads
 thread1.start()
