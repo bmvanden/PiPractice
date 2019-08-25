@@ -41,7 +41,8 @@ class GUIThread (threading.Thread):
         root.mainloop()
 
 def incrementValues():
-    PiData[0] = PiData[0] + 1
+    PiData0 = PiData0 + 1
+    
     # PiData[1] = PiData[1] + 1
     # PiData[2] = PiData[2] + 1
     # PiData0.set(PiData[0])
