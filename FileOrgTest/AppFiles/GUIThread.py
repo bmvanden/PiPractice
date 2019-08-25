@@ -20,41 +20,27 @@ class GUIThread (threading.Thread):
 
         #Data for live update of GUI
         PiData0 = tk.IntVar()
-        # PiData1 = tk.IntVar()
-        # PiData2 = tk.IntVar()
-        PiData0.set(3)
-        # PiData1.set(PiData[1])
-        # PiData2.set(PiData[2])
+        PiData1 = tk.IntVar()
+        PiData2 = tk.IntVar()
 
-        def incrementValues():
-            PiData0.set(PiData0.get() + 1)
-            # PiData[1] = PiData[1] + 1
-            # PiData[2] = PiData[2] + 1
-            # PiData0.set(PiData[0])
-            # PiData1.set(PiData[1])
-            # PiData2.set(PiData[2])
-        
         #Display Variable Values for Pi and ATMega
-        # PiDataTitle = tk.Label(root, text="Pi Data")
-        # PiDataTitle.pack()
+        PiDataTitle = tk.Label(root, text="Pi Data")
+        PiDataTitle.pack()
 
         PiDataLabel1 = tk.Label(root, textvariable=PiData0)
         PiDataLabel1.pack()
-        # PiDataLabel2 = tk.Label(root, textvariable=PiData1)
-        # PiDataLabel2.pack()
-        # PiDataLabel3 = tk.Label(root, textvariable=PiData2)
-        # PiDataLabel3.pack()
-        PiDataUpdateButton = tk.Button(root, text="Increment Values", command=incrementValues)
+        PiDataLabel2 = tk.Label(root, textvariable=PiData1)
+        PiDataLabel2.pack()
+        PiDataLabel3 = tk.Label(root, textvariable=PiData2)
+        PiDataLabel3.pack()
+        PiDataUpdateButton = tk.Button(root, text="Increment Values", command=)
         PiDataUpdateButton.pack()
-        
-
-            
-        # Run forever!        
-        # root.mainloop()
         
         while 1:
             root.update()
             PiData0.set(I2CThread.PiData[0])
+            PiData1.set(I2CThread.PiData[1])
+            PiData2.set(I2CThread.PiData[2])
             time.sleep(0.1)
             
         
