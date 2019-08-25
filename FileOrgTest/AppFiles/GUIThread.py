@@ -33,8 +33,8 @@ class GUIThread (threading.Thread):
         PiDataLabel2.pack()
         PiDataLabel3 = tk.Label(root, textvariable=PiData2)
         PiDataLabel3.pack()
-        PiDataUpdateButton = tk.Button(root, text="Increment Values", command=)
-        PiDataUpdateButton.pack()
+        #PiDataUpdateButton = tk.Button(root, text="Increment Values", command=)
+        #PiDataUpdateButton.pack()
         
         while 1:
             root.update()
