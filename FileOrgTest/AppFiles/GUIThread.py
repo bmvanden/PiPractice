@@ -44,11 +44,13 @@ class GUIThread (threading.Thread):
         # PiDataLabel3.pack()
         PiDataUpdateButton = tk.Button(root, text="Increment Values", command=incrementValues)
         PiDataUpdateButton.pack()
-
-        # Run forever!        
-        root.mainloop()
         
         while 1:
             PiData0.set(I2CThread.PiData[0])
+            
+        # Run forever!        
+        root.mainloop()
+        
+
 
 
